@@ -531,10 +531,15 @@ Command CreateUnbundleCommand()
             Option{ "-pfn", "Unpacks all files to a subdirectory under the output path, named after the package full name." },
             Option{ "-ac", "Allows any certificate. By default the signature origin must be known." },
             Option{ "-ss", "Skips enforcement of signed packages. By default packages must be signed." },
-            Option{ "-sl", "Skips matching packages with the language of the system. By default unpacked resources packages will match the system languages." },
-            Option{ "-sp", "Skips matching packages with of the same system. By default unpacked application packages will only match the platform." },
+            Option{ "-sl", "Skips matching packages with the language of the system. "
+                           "By default unpacked resources packages will match the system languages." },
+            Option{ "-sp", "Skips matching packages with of the same system. "
+                           "By default unpacked application packages will only match the platform." },
             Option{ "-extract-all", "Extracts all packages from the bundle." },
-            Option{ "-pfn-flat", "Unpacks bundle's files to a subdirectory under the specified output path, named after the package full name. Unpacks packages to subdirectories also under the specified output path, named after the package full name. By default unpacked packages will be nested inside the bundle folder." },
+            Option{ "-pfn-flat", "Unpacks bundle's files to a subdirectory under the specified output path, "
+                                 "named after the package full name. Unpacks packages to subdirectories also "
+                                 "under the specified output path, named after the package full name. "
+                                 "By default unpacked packages will be nested inside the bundle folder." },
             Option{ TOOL_HELP_COMMAND_STRING, "Displays this help text." },
         }
     };
@@ -596,22 +601,22 @@ Command CreateBundleCommand()
             Option{ "-d", "Input directory path.", false, 1, "inputDirectory" },
             Option{ "-p", "Output bundle file path.", true, 1, "outputBundle" },
             Option{ "-f", "Mapping file path.", false, 1, "mappingFile" },
-            Option{ "-bv", "Specifies the version number of the bundle being created. The version"
-                            "must be in dotted - quad notation of four integers"
-                            "<Major>.<Minor>.<Build>.<Revision> ranging from 0 to 65535 each.If the"
-                            "/ bv option is not specified or is set to 0.0.0.0, the bundle is created"
-                            "using the current date - time formatted as the version :"
+            Option{ "-bv", "Specifies the version number of the bundle being created. The version "
+                            "must be in dotted - quad notation of four integers "
+                            "<Major>.<Minor>.<Build>.<Revision> ranging from 0 to 65535 each. If the "
+                            "-bv option is not specified or is set to 0.0.0.0, the bundle is created "
+                            "using the current date - time formatted as the version: "
                             "<Year>.<Month - Day>.<Hour - Minute>.<Second - Millisecond>.", false, 1, "version" },
             Option{ "-mo", "Generates a bundle manifest only, instead of a full bundle. Input files must all " 
                             "be package manifests in XML format if this option is specified." },
-            Option{ "-fb", "Generates a fully sparse bundle where all packages are references to"
+            Option{ "-fb", "Generates a fully sparse bundle where all packages are references to "
                            "packages that exist outside of the bundle file." },
-            Option{ "-o", "Forces the output to overwrite any existing files with the"
-                           "same name.By default, the user is asked whether to overwrite existing"
-                           "files with the same name.You can't use this option with /no." },
-            Option{ "-no","Prevents the output from overwriting any existing files"
-                           "with the same name.By default, the user is asked whether to overwrite"
-                           "existing files with the same name.You can't use this option with /o." },
+            Option{ "-o", "Forces the output to overwrite any existing files with the "
+                           "same name.By default, the user is asked whether to overwrite existing "
+                           "files with the same name.You can't use this option with -no." },
+            Option{ "-no","Prevents the output from overwriting any existing files "
+                           "with the same name. By default, the user is asked whether to overwrite "
+                           "existing files with the same name.You can't use this option with -o." },
             Option{ "-v", "Enables verbose output of messages to the console."},
             Option{ TOOL_HELP_COMMAND_STRING, "Displays this help text." },
         }
@@ -619,13 +624,9 @@ Command CreateBundleCommand()
 
     result.SetDescription({
         "Creates an app bundle at <output bundle name> by adding all files from",
-        "either <content directory>(including subfolders) or a list of files within"
-        "<mapping file>.If either source contains a bundle manifest, it will be"
-        "ignored."
-
-        "Using / p will result in the bundle being unencrypted, while using / ep will"
-        "result in the bundle being encrypted.If you use / ep you must specify"
-        "either / kt or /kf.",
+        "either <content directory> (including subfolders) or a list of files within",
+        "<mapping file>. If either source contains a bundle manifest, it will be",
+        "ignored.",
         });
 
     result.SetInvocationFunc([](const Invocation& invocation)
